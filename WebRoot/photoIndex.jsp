@@ -13,8 +13,9 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="css/style.css" type="text/css" rel="stylesheet" />
 <link href="css/material.css" type="text/css" rel="stylesheet" />
-<script language="javascript" src="js/js.js" type="text/javascript"></script>
-<script language="javascript" src="js/material.js" type="text/javascript"></script>
+<script src="js/main.js" type="text/javascript"></script>
+<script src="js/material.js" type="text/javascript"></script>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="dao" scope="page" class="com.wy.dao.OperationData"></jsp:useBean>
 <title>首页</title>
@@ -22,7 +23,7 @@
 <body>
 <div class="container">
 
-<header><jsp:include page="right.jsp" flush="true" /></header>
+<header><jsp:include page="header.jsp" flush="true" /></header>
 <div class="wrapper">      
 
 <%-- <%
@@ -189,7 +190,7 @@ break;
 		
 		
 </div>
-<jsp:include page="down.jsp" flush="true" />
+<jsp:include page="footer.jsp" flush="true" />
 </div>
 </body>
 </html>

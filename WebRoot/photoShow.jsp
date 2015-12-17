@@ -6,13 +6,13 @@
 <title>相片查询</title>
 </head>
 <link href="css/style.css" type="text/css" rel="stylesheet" />
-<script language="javascript" src="js/js.js" type="text/javascript"></script>
+<script src="js/main.js" type="text/javascript"></script>
 
 <%
 Photo photo=(Photo)request.getAttribute("photo");
 %>
 <body>
- <jsp:include page="top.jsp" flush="true" />
+	<header><jsp:include page="header.jsp" flush="true" /></header>
  <table width="753" height="37" align="center" cellpadding="0" cellspacing="0" background="images/13.jpg">
    <tr>
      <td width="777" height="30"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#EDE6BC" size="-1"><b>当前用户：${sessionScope.userInfo.username}</b></font></td>
@@ -87,8 +87,7 @@ Photo photo=(Photo)request.getAttribute("photo");
 	
 	  <br>
 		
-    <br> <br><br> <br><br> 
-	  <form name="form" method="post" action="photoServlet?info=userprintPhoto&id=${requestScope.photo.id}" onSubmit="return checkPhotoPrint(form)">
+	  <!-- <form name="form" method="post" action="photoServlet?info=userprintPhoto&id=${requestScope.photo.id}" onSubmit="return checkPhotoPrint(form)">
         <table width="157" border="0" align="center">
           <tr>
             <td height="30">&nbsp;&nbsp;&nbsp;<b>&nbsp;添加水印文字</b></td>
@@ -100,7 +99,7 @@ Photo photo=(Photo)request.getAttribute("photo");
             <td height="39">&nbsp;&nbsp;&nbsp;<a href="javascript:form.submit();" class="a4">生成水印图片</a></td>
           </tr>
         </table>
-		</form>
+		</form> -->
 		<br><center>
 		${requestScope.information}
 		</center>
@@ -110,6 +109,6 @@ Photo photo=(Photo)request.getAttribute("photo");
 	  </td>
     </tr>
 </table>
-  <jsp:include page="down.jsp" flush="true"/>
+  <jsp:include page="footer.jsp" flush="true"/>
 </body>
 </html>

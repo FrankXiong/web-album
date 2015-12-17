@@ -3,14 +3,11 @@ package com.wy.tools;
 import java.security.*;
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Encrypt {
 
-	// 该方法将密码进行MD5的加密，这个方法为静态方法，可以通过类名进行直接访问
 	public static String encode(String str) {
-		if (str == null) // 当参数str为空，直接通过return关键字进行返回
+		if (str == null) 
 			return null;
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -29,13 +26,11 @@ public class Encrypt {
 		return sb.toString().toUpperCase();
 	}
 
-	// 该方法返回的系统的时间，也是静态方法
 	public static String currentlyTime() {
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.FULL);
 		return dateFormat.format(date);
 	}
-	// 该方法将参数内容进行转码，也是静态方法
 	public static String toChinese(String strvalue) {
 		try {
 			if (strvalue == null) {

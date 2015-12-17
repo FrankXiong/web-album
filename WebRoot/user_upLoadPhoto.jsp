@@ -1,10 +1,10 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" pageEncoding="GB2312" %>
 <jsp:directive.page import="com.wy.tools.Encrypt"/>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Materialé£æ ¼çš„å›¾ç‰‡ç½‘ç«™">
+<meta name="description" content="Material·ç¸ñµÄÍ¼Æ¬ÍøÕ¾">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Picker</title>
@@ -14,8 +14,8 @@
 <link href="css/style.css" type="text/css" rel="stylesheet" />
 <link href="css/upload.css" type="text/css" rel="stylesheet" />
 <link href="css/material.css" type="text/css" rel="stylesheet" />
-<script language="javascript" src="js/js.js" type="text/javascript"></script>
-<script language="javascript" src="js/material.js" type="text/javascript"></script>
+<script src="js/main.js" type="text/javascript"></script>
+<script src="js/material.js" type="text/javascript"></script>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </head>
@@ -23,121 +23,55 @@
     <%response.sendRedirect("index.jsp");%>
 </c:if>
 
-
-<script type="text/javascript">
-    function addMore(){
-    var td = document.getElementById("more");
-    var br= document.createElement("br");
-    var input= document.createElement("input");
-    var button= document.createElement("input");
-    
-    input.type = "file";
-    input.name = "file";
-    
-    button.type = "button";
-    button.value = "ç§»é™¤...";
-    
-    
-    button.onclick = function(){
-      td.removeChild(br);
-      td.removeChild(input);
-      td.removeChild(button);
-    }
-   
-    td.appendChild(br);
-    td.appendChild(input);
-    td.appendChild(button);
-    }
-</script>
- 
 <body>
 <div class="container">
-
-   <header><jsp:include page="right.jsp" flush="true" /></header>
-   <div class="wrapper">
-	   <div class="mdl-cell mdl-cell--12-col">
-    	<div class="cards">
-    		<div class="poster mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-	   <table width="753" height="54" border="0" align="center" cellpadding="0" cellspacing="0">
-	     <tr>
-	       <td height="51"><table width="287" height="33" border="0" align="center" cellpadding="0" cellspacing="0">
-	         <tr>
-	           <th width="287" height="33" align="center" valign="bottom">ä¸Šä¼ å›¾ç‰‡</th>
-	         </tr>
-	       </table></td>
-	     </tr>
-	   </table>
-   
-   
-   
-   
-   <table width="753" height="504" border="0" align="center" cellpadding="0" cellspacing="0">
-     <tr>
-       <td height="120" align="center" valign="top">    
-	   
-	      
-	   <form action="photoServlet?info=userUploadPhoto" method="post" enctype="multipart/form-data" name="form" onSubmit="return checkPhoto(form)">
-	     <table width="525" border="0">
-         <tr>
-           <td width="75" height="20"><b>ç›¸ç‰‡åç§°ï¼š</b></td>
-           <td width="434"><input name="photoName" type="text" maxlength="20"></td>
-         </tr>
-         <tr>
-           <td height="20"><b>ç›¸ç‰‡ç±»å‹ï¼š</b></td>
-           <td>
-             <select name="photoType">
-			    <option value="ç½‘é¡µè®¾è®¡">ç½‘é¡µè®¾è®¡</option>
-			    <option value="æµ·æŠ¥">æµ·æŠ¥</option>
-			    <option value="äººç‰©">äººç‰©</option>
-			    <option value="æ¼«ç”»">æ¼«ç”»</option>
-			    <option value="ç”Ÿæ´»">ç”Ÿæ´»</option>
-			    <option value="é£æ™¯">é£æ™¯</option>
-             </select>
-		   </td>
-         </tr>
-         <tr>
-           <td height="20"><b>ä¸Šä¼ æ—¶é—´ï¼š</b></td>
-           <td><%=Encrypt.currentlyTime()%><input name="photoTime" type="hidden" value="<%=Encrypt.currentlyTime()%>"></td>
-         </tr>
-         <tr>
-           <td height="20"><b>ç›¸ç‰‡ä½ç½®ï¼š</b></td>
-           <td id="more"><input name="file" type="file" maxlength="20"><input type="button" name="more.." value="å¢åŠ ..." onClick="addMore()"></td>
-         </tr>
-         <tr>
-           <td height="20"><b>ä¸Šä¼ ç”¨æˆ·ï¼š</b></td>
-           <td>${sessionScope.userInfo.username}<input name="username" type="hidden" value="${sessionScope.userInfo.username}" class="input2"></td>
-         </tr>
-         <tr>
-           <td height="20"><b>éªŒ&nbsp;è¯&nbsp;ç ï¼š</b></td>
-           <td><input name="code" type="text" maxlength="20"></td>
-         </tr>
-         <tr>
-           <td height="20">&nbsp;</td>
-           <td><a href="#" onClick="reload()"><img border=0 src="image.jsp" name="checkCode"></a></td>
-         </tr>
-         <tr>
-           <td height="20">&nbsp;</td>
-           <td>             
-               <input type="submit" name="Submit" value="ä¸Šä¼ " >
-             &nbsp;&nbsp;
-               <input type="reset" name="Submit2" value="é‡ç½®">
-             &nbsp;&nbsp;
-               <input type="button" name="Submit3" value="è¿”å›" onClick="javascript:window.location.href='photoServlet?info=userQueryPhoto';">
-            </td>
-         </tr>         
-       </table>	   
+<header><jsp:include page="header.jsp" flush="true" /></header>
+   <div class="upload-wrapper">
+	 <div class="mdl-cell mdl-cell--12-col">
+    		<div class="cards mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+	          <div class="form-title"><span>ÉÏ´«Í¼Æ¬</span></div>
+	 <form action="photoServlet?info=userUploadPhoto" method="post" enctype="multipart/form-data" name="form" onSubmit="return checkPhoto(form)">
+	 	<input name="username" value="${sessionScope.userInfo.username}"  type="text" style="display:none">
+	    <div class="form-line">
+	     	<span>ÏàÆ¬Ãû³Æ:</span>
+	     	<input name="photoName" type="text" maxlength="20">
+	    </div>
+     	<div class="form-line">
+        	<span>ÏàÆ¬ÀàĞÍ:</span>
+            <select name="photoType">
+			    <option value="web design">ÍøÒ³Éè¼Æ</option>
+			    <option value="poster">º£±¨</option>
+			    <option value="person">ÈËÎï</option>
+			    <option value="carton">Âş»­</option>
+			    <option value="life">Éú»î</option>
+			    <option value="beauty">·ç¾°</option>
+            </select>
+         </div>
+         <div class="form-line">
+	  		<span>ÉÏ´«Ê±¼ä£º</span>
+         	<%=Encrypt.currentlyTime()%><input name="photoTime" type="hidden" value="<%=Encrypt.currentlyTime()%>">
+         </div>
+        <div class="form-line" id="more">
+        	<span>ÏàÆ¬Î»ÖÃ£º</span>
+        	<input name="file" type="file" maxlength="20">
+        	<input type="button" name="more.." value="Ôö¼Ó..." onClick="addMore()">
+        </div>
+        <!-- <div class="form-line">
+       		<span>ÑéÖ¤Âë:</span>
+         	<input name="code" type="text" maxlength="20">  
+         	<a href="#" onClick="reload()"><img border=0 src="image.jsp" name="checkCode"></a>   
+         </div> -->
+        <div class="form-line form-submit">        
+            <input class="input mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast" type="submit" name="Submit" value="ÉÏ´«" >
+            <input class="reset-btn" href="#" type="reset" name="Submit2" value="³·Ïú">
+	 	</div>
 	 </form>	 
-	<b> æ³¨æ„ï¼šå›¾ç‰‡çš„æ ¼å¼åªèƒ½ä¸ºï¼šâ€œjpgâ€ã€â€œgifâ€ã€â€œbmpâ€æ ¼å¼<br><br>
-	 ${requestScope.information}</b>
-       </td>
-     </tr>
-</table>
-	</div>
+	<p class="hint-txt"> ×¢Òâ£ºÍ¼Æ¬µÄ¸ñÊ½Ö»ÄÜÎª£º¡°jpg¡±¡¢¡°gif¡±¡¢¡°bmp¡±¸ñÊ½<br>
+	${requestScope.information}</p>
 	</div>
 	</div>
 </div>
-<jsp:include page="down.jsp" flush="true"></jsp:include>
-
+<jsp:include page="footer.jsp" flush="true"></jsp:include>
 </div>
 </body>
 </html>

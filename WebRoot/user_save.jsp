@@ -2,13 +2,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>用户注册</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Material风格的图片网站">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Picker</title>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="css/style.css" type="text/css" rel="stylesheet" />
-<script language="javascript" src="js/js.js" type="text/javascript"></script>
+<link href="css/material.css" type="text/css" rel="stylesheet" />
+<script language="javascript" src="js/main.js" type="text/javascript"></script>
+<script language="javascript" src="js/material.js" type="text/javascript"></script>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </head>
 <body>
-<jsp:include page="top.jsp"/>
+<header><jsp:include page="header.jsp"/></header>
 
 
 <table width="753" height="46" border="0" align="center" cellpadding="0" cellspacing="0" >
@@ -93,7 +103,7 @@
   </tr>
 </table>
 
-<jsp:include page="down.jsp" flush="true" />
+<jsp:include page="footer.jsp" flush="true" />
 
 </body>
 </html>

@@ -3,7 +3,6 @@ package com.wy.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.wy.form.Photo;
@@ -12,6 +11,7 @@ import com.wy.tools.JDBConnection;
 
 public class OperationData {
 	private JDBConnection connection = null; 
+	@SuppressWarnings("rawtypes")
 	private List list = null;                
 	String sql = "";                        
 	                       
@@ -63,7 +63,7 @@ public class OperationData {
 				+ photo.getPhotoType() + "','"
 				+ photo.getPhotoTime() + "','" 
 				+ photo.getPhotoAddress()+ "','" 
-				+ photo.getUsername() + "',0,'" 
+				+ photo.getUsername() + "','" 
 				+ photo.getSmallPhoto()+ "')";
 		boolean flag = connection.executeUpdate(sql); 
 		connection.closeConnection(); 
@@ -78,6 +78,7 @@ public class OperationData {
 		return flag; 
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List photo_queryList(String condition) {
 		Photo photo = null; 
 		list = new ArrayList();
@@ -96,7 +97,6 @@ public class OperationData {
 				photo.setPhotoTime(rs.getString("photoTime"));
 				photo.setPhotoAddress(rs.getString("photoAddress"));
 				photo.setUsername(rs.getString("username"));
-				photo.setPrintAddress(rs.getString("printAddress"));
 				photo.setSmallPhoto(rs.getString("smallPhoto"));
 				list.add(photo); 
 			}
@@ -131,18 +131,19 @@ public class OperationData {
 		return type; 
 	}
 
-	public boolean updatePhoto(Photo photo) {
-		connection = new JDBConnection();
-		sql = "update tb_photo set printAddress = '" + photo.getPrintAddress()
-				+ "' where id = '" + photo.getId() + "'";
+//	public boolean updatePhoto(Photo photo) {
+//		connection = new JDBConnection();
+//		sql = "update tb_photo set printAddress = '" + photo.getPrintAddress()
+//				+ "' where id = '" + photo.getId() + "'";
+//
+//		if (connection.executeUpdate(sql)) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
 
-		if (connection.executeUpdate(sql)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List queryPhotoList() {
 		connection = new JDBConnection();
 		list = new ArrayList(); 

@@ -14,17 +14,12 @@ newAddress=newAddress.substring(0,newAddress.length()-1);
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>幻灯片浏览相片</title>
-<SCRIPT language="javascript">
+<title>Picker</title>
+<script>
 //指定要显示的图片路径
-
 var sImgArr=new Array(<%=newAddress%>);
-
 var plImg = new Image();
 var gIndex = 0;
-
-
-
 function SlideImg(index){
 	gIndex = index;
 	if ('Microsoft Internet Explorer' == navigator.appName)	{
@@ -43,29 +38,18 @@ function PrevImg(){  //显示前一张图片
 	gIndex = ((gIndex-1)<0?(sImgArr.length-1):(gIndex-1));
 	SlideImg(gIndex);	
 }
-
-
 var sid;
 function inislide(){  //设置自动运行
-
 	if(sid==null){
 		sid = setInterval('NextImg()', 3000);
 	}
 }
-
-</SCRIPT>
+</script>
 </head>
 
-
-
 <body onLoad="inislide()">
-
-
-
-  
-  
-  
-     <jsp:include page="top.jsp" flush="true" />
+ 
+    <header><jsp:include page="header.jsp" flush="true" /></header>
    <table width="753" height="40" border="0" align="center" cellpadding="0" cellspacing="0" background="images/16.jpg">
      <tr>
        <td width="561" height="28">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#EDE6BC" size="-1"><b>当前用户：${sessionScope.userInfo.username}</b></font></td>
@@ -107,46 +91,15 @@ function inislide(){  //设置自动运行
     </tr>
   </table>
 	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-	   </td>
+   </td>
      </tr>
 </table>
    
 
-
-
-
-
-
-
-<jsp:include page="down.jsp" flush="true"></jsp:include>
+<jsp:include page="footer.jsp" flush="true"></jsp:include>
 <map name="Map">
 <area shape="circle" coords="214,32,17" href="#" onClick="PrevImg()">
 <area shape="circle" coords="272,32,16" href="#"  onClick="NextImg()"></map></body>    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
               
 </html>        

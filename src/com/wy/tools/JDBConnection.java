@@ -10,20 +10,19 @@ public class JDBConnection {
     String dbName = "album";            
     String url = "jdbc:mysql://localhost:3306/" + dbName + "?user="  
             + userName + "&password=" + userPasswd;  
-	private Connection con = null; // �������Ӷ��󣬲���ֵΪnull
-	// ͨ���췽��������ݿ���
+	private Connection con = null; 
 	public JDBConnection() {
 		try {
-			Class.forName(dbDriver).newInstance(); // ͨ��Java������ƽ��м�����ݿ������
+			Class.forName(dbDriver).newInstance();
 		} catch (Exception ex) {
-			System.out.println("��ݿ����ʧ��");
+			System.out.println("JDBC line 18");
 		}
 	}
-	// ������ݿ�����
+
 	public boolean creatConnection() {
 		try {
-			con = DriverManager.getConnection(url); // ����û���url��ַ�Լ��������������Ӳ���
-			con.setAutoCommit(true); // ����ϵͳ���Զ����Ӳ���
+			con = DriverManager.getConnection(url); 
+			con.setAutoCommit(true);
 			return true;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -31,33 +30,32 @@ public class JDBConnection {
 			return false;
 		}
 	}
-	// ����ݿ�����ӡ��޸ĺ�ɾ��Ĳ���
+
 	public boolean executeUpdate(String sql) {
-		if (con == null) { // ��con����Ϊ�գ�����creatConnection()������ʵ����ݿ����Ӳ���
+		if (con == null) {
 			creatConnection();
 		}
 		try {
 			Statement stmt = con.createStatement();
-			int iCount = stmt.executeUpdate(sql); // ִ�в���SQL���
-			System.out.println("�����ɹ�����Ӱ��ļ�¼��Ϊ" + String.valueOf(iCount)); // �ڿ���̨����ʾִ�еĽ��
-			return true; // ���SQL���ִ�гɹ�������true
+			int iCount = stmt.executeUpdate(sql); 
+			System.out.println("JDBC line 41" + String.valueOf(iCount)); 
+			return true;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			return false; // ���SQL���ִ��ʧ�ܣ�����false
+			return false; 
 		}
 	}
-	// ����ݿ�Ĳ�ѯ����
 	public ResultSet executeQuery(String sql) {
-		ResultSet rs; // ����ResultSet������rs
+		ResultSet rs;
 		try {
-			if (con == null) { // ��con����Ϊnull��ȡ����ݿ����Ӳ���
+			if (con == null) { 
 				creatConnection();
 			}
 			Statement stmt = con.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			try {
-				rs = stmt.executeQuery(sql); // ִ�в����е�SQL���
+				rs = stmt.executeQuery(sql); 
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 				return null;
@@ -67,9 +65,9 @@ public class JDBConnection {
 			System.out.println("executeQueryError!");
 			return null;
 		}
-		return rs; // ����ѯ�Ľ��ͨ��return�ؼ��ֽ��з���
+		return rs;
 	}
-	// �ر���ݿ�Ĳ���
+	
 	public void closeConnection() {
 		if (con != null) {
 			try {

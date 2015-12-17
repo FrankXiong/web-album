@@ -17,12 +17,6 @@ import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGEncodeParam;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
-import java.io.FileOutputStream;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 public class ImageUtils {
 
@@ -40,9 +34,9 @@ public class ImageUtils {
 		Font font = new Font(markContent, Font.BOLD, 200);
 		g.setFont(font);
 		g.setComposite(AlphaComposite
-				.getInstance(AlphaComposite.SRC_OVER, 0.5f));// 10%透明
-		g.rotate(0.3f); // 文字的旋转角度
-		g.drawString(markContent, width / 3, height / 3);// 绘制水印的位置
+				.getInstance(AlphaComposite.SRC_OVER, 0.5f));
+		g.rotate(0.3f); 
+		g.drawString(markContent, width / 3, height / 3);
 		g.dispose();
 		try {
 			FileOutputStream out = new FileOutputStream(printPath);
@@ -59,18 +53,18 @@ public class ImageUtils {
 	}
 
 	public static void createSmallPhoto(String photoPath, String smallPath) {
-		File _file = new File(photoPath); // 读入文件
+		File _file = new File(photoPath); 
 		Image src;
 		try {
 			src = javax.imageio.ImageIO.read(_file);
-			int wideth = 110; // 得到源图宽
-			int height = 80; // 得到源图长
+			int wideth = 110; 
+			int height = 80; 
 			BufferedImage tag = new BufferedImage(wideth, height,
 					BufferedImage.TYPE_INT_RGB);
-			tag.getGraphics().drawImage(src, 0, 0, wideth, height, null); // 绘制缩小后的图
-			FileOutputStream out = new FileOutputStream(smallPath); // 输出到文件流
+			tag.getGraphics().drawImage(src, 0, 0, wideth, height, null); 
+			FileOutputStream out = new FileOutputStream(smallPath);
 			JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
-			encoder.encode(tag); // 近JPEG编码
+			encoder.encode(tag); 
 			out.close();
 		} catch (IOException e) {
 			e.printStackTrace();

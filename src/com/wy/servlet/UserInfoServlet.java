@@ -74,7 +74,7 @@ public class UserInfoServlet extends HttpServlet {
 
 	private void user_save(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=GBK");
+		response.setContentType("text/html;charset=GB2312");
 		PrintWriter out = response.getWriter();
 		data = new OperationData();
 		UserInfo userInfo = new UserInfo();

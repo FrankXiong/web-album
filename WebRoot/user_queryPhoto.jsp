@@ -13,7 +13,7 @@
 <link href="css/style.css" type="text/css" rel="stylesheet" />
 <link href="css/material.css" type="text/css" rel="stylesheet" />
 <script language="javascript" src="js/material.js" type="text/javascript"></script>
-<script language="javascript" src="js/js.js" type="text/javascript"></script>
+<script language="javascript" src="js/main.js" type="text/javascript"></script>
 
 <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -28,7 +28,7 @@ response.sendRedirect("index.jsp");
 
 <body>
 <div class="container">
-   <header><jsp:include page="right.jsp" flush="true" /></header>
+   <header><jsp:include page="header.jsp" flush="true" /></header>
    <div class="wrapper">   
        <a href="user_upLoadPhoto.jsp" class="a1">上传图片</a>	  
        <span>查询个人相册</span>    
@@ -81,7 +81,7 @@ response.sendRedirect("index.jsp");
         %>      
    	</c:if>      
 </div>
-<jsp:include page="down.jsp" flush="true"></jsp:include>
+<jsp:include page="footer.jsp" flush="true"></jsp:include>
 </div>
 </body>
 </html>
