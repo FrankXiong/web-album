@@ -26,7 +26,7 @@
 	</c:if>
 
 	<c:if  test="${!empty sessionScope.userInfo}">
-	 <p>${sessionScope.userInfo.username}登录成功！</p>
+	 <p class="username-txt">${sessionScope.userInfo.username}</p>
 	 <p><a href="userInfoServlet?info=cannleUser">退出</a></p>
 	</c:if>
 	

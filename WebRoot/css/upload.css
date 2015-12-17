@@ -6,7 +6,7 @@
 	margin:0 auto;
 }
 .cards{
-	padding:40px 40px 20px;
+	padding:40px 40px 60px;
 }
 .form-line{
 	line-height:36px;
@@ -35,4 +35,8 @@
 	top:20px;
 	color:rgba(0,0,0,0.5);
 	font-size:12px;
+}
+.page-album-title{
+	margin-bottom:15px;
+	margin-left:15px;
 }

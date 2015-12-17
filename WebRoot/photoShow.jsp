@@ -3,10 +3,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>相片查询</title>
-</head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Material风格的图片网站">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Picker</title>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href="css/material.css" type="text/css" rel="stylesheet" />
 <script src="js/main.js" type="text/javascript"></script>
+<script src="js/material.js" type="text/javascript"></script>
 
 <%
 Photo photo=(Photo)request.getAttribute("photo");

@@ -218,7 +218,7 @@ public class PhotoServlet extends HttpServlet {
 		String condition = "username = '" + username + "'";
 		List list = data.photo_queryList(condition); 
 		request.setAttribute("list", list); 
-		request.getRequestDispatcher("user_queryPhoto.jsp").forward(request,
+		request.getRequestDispatcher("userAlbum.jsp").forward(request,
 				response);
 	}
 

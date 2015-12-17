@@ -22,7 +22,6 @@ public class OperationData {
 		
 		ResultSet rs = connection.executeQuery(sql); 
 		try {
-		
 			while (rs.next()) {
 				userInfo = new UserInfo();
 				userInfo.setUsername(rs.getString("username"));  

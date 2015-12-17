@@ -361,6 +361,28 @@ a img{
 }
 
 
+.page-album-title{
+	float:left;
+	margin-left:24px;
+	font-size:24px;
+}
+.page-album-upload-btn{
+	float:right;
+	margin-right:24px;
+}
+.mdl-grid{
+	clear:both;
+}
+
+.username-txt{
+	margin-right:10px;
+}
+
+
+
+
+
+
 /*reset css*/
 .login-btn{
 	height:24px !important;

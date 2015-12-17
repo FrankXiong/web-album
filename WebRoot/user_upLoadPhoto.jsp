@@ -27,9 +27,10 @@
 <div class="container">
 <header><jsp:include page="header.jsp" flush="true" /></header>
    <div class="upload-wrapper">
+   		<span class="page-album-title">上传图片</span>
 	 <div class="mdl-cell mdl-cell--12-col">
     		<div class="cards mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-	          <div class="form-title"><span>上传图片</span></div>
+	          
 	 <form action="photoServlet?info=userUploadPhoto" method="post" enctype="multipart/form-data" name="form" onSubmit="return checkPhoto(form)">
 	 	<input name="username" value="${sessionScope.userInfo.username}"  type="text" style="display:none">
 	    <div class="form-line">

@@ -25,7 +25,7 @@
 
 <header><jsp:include page="header.jsp" flush="true" /></header>
 <div class="wrapper">      
-
+	<span class="page-album-title">所有图片</span>
 <%-- <%
 List<Photo> list1=(List<Photo>)request.getAttribute("list");
 int a=0;
@@ -45,18 +45,12 @@ for(Photo photo1:list1){
   break;  }
   if(list2.size()<3){  
   for(int i=0;i<3-list2.size();i++){  %>
-   
     <%}
-  
-  
   } %>
- 
 <%
-
 a++;
 if(a==3)
 break;
-
 } %> --%>
 <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--3-col">

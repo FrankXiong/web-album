@@ -11,7 +11,9 @@
 <title>Picker</title>
 
 <link href="css/style.css" type="text/css" rel="stylesheet" />
+<link href="css/user-album.css" type="text/css" rel="stylesheet" />
 <link href="css/material.css" type="text/css" rel="stylesheet" />
+
 <script language="javascript" src="js/material.js" type="text/javascript"></script>
 <script language="javascript" src="js/main.js" type="text/javascript"></script>
 
@@ -23,21 +25,21 @@
 if(null==session.getAttribute("userInfo")){
 response.sendRedirect("index.jsp");
 }
-
 %>
 
 <body>
 <div class="container">
    <header><jsp:include page="header.jsp" flush="true" /></header>
    <div class="wrapper">   
-       <a href="user_upLoadPhoto.jsp" class="a1">上传图片</a>	  
-       <span>查询个人相册</span>    
+   		<span class="page-album-title">我的相册</span>
+       <a href="user_upLoadPhoto.jsp" class="page-album-upload-btn">上传图片</a>	  
+       
 	   <c:if test="${empty type}">
 	      <c:out value="你还没有上传过图片"/>	      
 	   </c:if>
 	  	  
 	   <c:if test="${!empty type}">	         
-		  <%
+		  <%-- <%
 		  String[] typePhoto=(String[])request.getAttribute("type");
 		  int  lineCount=5;
 		  int  typeLength=typePhoto.length;
@@ -64,7 +66,7 @@ response.sendRedirect("index.jsp");
        		break;
         	} }%>
    
-    	 <b><%=typePhoto[i]%></b>
+    		<%=typePhoto[i]%>
            <%
             if(i%lineCount==lineCount-1){
              	  
@@ -78,7 +80,139 @@ response.sendRedirect("index.jsp");
               out.print("<td align=center width=155>&nbsp;</td>");
         	  }
         }
-        %>      
+        %>       --%>
+        
+        <!-- album list -->
+        <div class="mdl-grid page-album-list">
+    <div class="mdl-cell mdl-cell--3-col">
+    	<div class="cards">
+			<div class="web-design mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+                <h2 class="mdl-card__title-text">网页设计</h2>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                收录当下网页设计佳作
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="photoServlet?info=queryPhotoList&type=网页设计" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+              </div>
+            </div>
+        </div>
+    </div>    
+    <div class="mdl-cell mdl-cell--3-col">
+    	<div class="cards">
+			<div class="poster mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+                <h2 class="mdl-card__title-text">海报</h2>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                收录当下网页设计佳作
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="photoServlet?info=queryPhotoList&type=海报" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+              </div>
+            </div>
+        </div>
+    </div>    
+    <div class="mdl-cell mdl-cell--3-col">
+    	<div class="cards">
+			<div class="person mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+                <h2 class="mdl-card__title-text">人物</h2>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                收录当下网页设计佳作
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="photoServlet?info=queryPhotoList&type=人物" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+              </div>
+            </div>
+        </div>
+    </div>   
+    
+    <div class="mdl-cell mdl-cell--3-col">
+    	<div class="cards">
+			<div class="carton mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+                <h2 class="mdl-card__title-text">漫画</h2>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                收录当下网页设计佳作
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="photoServlet?info=queryPhotoList&type=漫画" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+              </div>
+            </div>
+        </div>
+    </div>    
+    
+    
+    
+    
+    
+    <div class="mdl-cell mdl-cell--3-col">
+    	<div class="cards">
+			<div class="life mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+                <h2 class="mdl-card__title-text">生活</h2>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                收录当下网页设计佳作
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+              </div>
+            </div>
+        </div>
+    </div>    
+    <div class="mdl-cell mdl-cell--3-col">
+    	<div class="cards">
+			<div class="icon mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+                <h2 class="mdl-card__title-text">图标</h2>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                收录当下网页设计佳作
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+              </div>
+            </div>
+        </div>
+    </div>    
+    <div class="mdl-cell mdl-cell--3-col">
+    	<div class="cards">
+			<div class="sport mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+                <h2 class="mdl-card__title-text">运动</h2>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                收录当下网页设计佳作
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+              </div>
+            </div>
+        </div>
+    </div>   
+    
+    <div class="mdl-cell mdl-cell--3-col">
+    	<div class="cards">
+			<div class="blackwhite mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+                <h2 class="mdl-card__title-text">黑白</h2>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                收录当下网页设计佳作
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+              </div>
+            </div>
+        </div>
+    </div>    
+</div>
+<!--album  list-->
    	</c:if>      
 </div>
 <jsp:include page="footer.jsp" flush="true"></jsp:include>

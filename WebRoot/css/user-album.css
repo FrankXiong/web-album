@@ -1,0 +1,27 @@
+@CHARSET "US-ASCII";
+.icon .mdl-card__title {
+  background-image: url('../images/icon-u.png');
+  background-size:120px 120px;
+  background-position: center;
+}
+.web-design .mdl-card__title {
+  background-image: url('../images/webdesign-u.jpg');
+}
+.blackwhite .mdl-card__title {
+  background-image: url('../images/blackwhite-u.jpg');
+}
+.carton .mdl-card__title {
+  background-image: url('../images/carton-u.png'); 
+}
+.life .mdl-card__title {
+  background-image: url('../images/life-u.jpg');
+}
+.person .mdl-card__title {
+  background-image: url('../images/person-u.jpg');
+}
+.poster .mdl-card__title {
+  background-image: url('../images/poster-u.jpg');
+}
+.sport .mdl-card__title {
+  background-image: url('../images/sport-u.jpg');
+}
