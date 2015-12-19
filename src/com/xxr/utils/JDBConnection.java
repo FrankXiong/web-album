@@ -1,7 +1,11 @@
-package com.wy.tools;
+package com.xxr.utils;
 
 import java.sql.*;
 
+/**
+ * @author xiongxianren
+ * @desciption 数据库连接工具类
+ */
 public class JDBConnection {
 	private final String dbDriver = "com.mysql.jdbc.Driver"; 
 	String driverName = "com.mysql.jdbc.Driver";         

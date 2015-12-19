@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" pageEncoding="GB2312" %>
-<jsp:directive.page import="com.wy.tools.Encrypt"/>
+<jsp:directive.page import="com.xxr.utils.EncryptUtil"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB2312" />
@@ -20,7 +20,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </head>
 <c:if test="${sessionScope.userInfo==null}">
-    <%response.sendRedirect("index.jsp");%>
+    <%
+    	response.sendRedirect("index.jsp");
+    %>
 </c:if>
 
 <body>
@@ -50,7 +52,7 @@
          </div>
          <div class="form-line">
 	  		<span>上传时间：</span>
-         	<%=Encrypt.currentlyTime()%><input name="photoTime" type="hidden" value="<%=Encrypt.currentlyTime()%>">
+         	<%=EncryptUtil.currentlyTime()%><input name="photoTime" type="hidden" value="<%=EncryptUtil.currentlyTime()%>">
          </div>
         <div class="form-line" id="more">
         	<span>相片位置：</span>

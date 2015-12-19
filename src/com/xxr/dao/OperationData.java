@@ -1,13 +1,14 @@
-package com.wy.dao;
+package com.xxr.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.wy.form.Photo;
-import com.wy.form.UserInfo;
-import com.wy.tools.JDBConnection;
+import com.xxr.model.Photo;
+import com.xxr.model.UserInfo;
+import com.xxr.utils.EncodeUtil;
+import com.xxr.utils.JDBConnection;
 
 public class OperationData {
 	private JDBConnection connection = null; 
@@ -60,7 +61,7 @@ public class OperationData {
 				+ photo.getPhotoName() + "','"
 				+ photo.getPhotoSize() + "','" 
 				+ photo.getPhotoType() + "','"
-				+ photo.getPhotoTime() + "','" 
+				+ EncodeUtil.toChinese(photo.getPhotoTime()) + "','" 
 				+ photo.getPhotoAddress()+ "','" 
 				+ photo.getUsername() + "','" 
 				+ photo.getSmallPhoto()+ "')";

@@ -1,12 +1,12 @@
-package com.wy.tools;
+package com.xxr.utils;
 
 import java.security.*;
 import java.text.DateFormat;
 import java.util.Date;
 
-public class Encrypt {
+public class EncryptUtil {
 
-	public static String encode(String str) {
+	public static String MD5(String str) {
 		if (str == null) 
 			return null;
 		StringBuilder sb = new StringBuilder();
@@ -31,18 +31,4 @@ public class Encrypt {
 		DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.FULL);
 		return dateFormat.format(date);
 	}
-	public static String toChinese(String strvalue) {
-		try {
-			if (strvalue == null) {
-				return "";
-			} else {
-				strvalue = new String(strvalue.getBytes("ISO8859_1"), "GBK");
-				return strvalue;
-			}
-		} catch (Exception e) {
-			return "";
-		}
-
-	}
-
 }

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
 <jsp:directive.page import="java.util.List"/>
-<jsp:directive.page import="com.wy.form.Photo"/>
+<jsp:directive.page import="com.xxr.model.Photo"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -94,7 +94,7 @@ response.sendRedirect("index.jsp");
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="photoServlet?info=queryPhotoList&type=网页设计" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=queryPhotoList&type=web design" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -109,7 +109,7 @@ response.sendRedirect("index.jsp");
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="photoServlet?info=queryPhotoList&type=海报" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=queryPhotoList&type=poster" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -124,7 +124,7 @@ response.sendRedirect("index.jsp");
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="photoServlet?info=queryPhotoList&type=人物" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=queryPhotoList&type=person" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -140,7 +140,7 @@ response.sendRedirect("index.jsp");
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="photoServlet?info=queryPhotoList&type=漫画" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=queryPhotoList&type=carton" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -160,7 +160,7 @@ response.sendRedirect("index.jsp");
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=queryPhotoList&type=life" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -175,7 +175,7 @@ response.sendRedirect("index.jsp");
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=queryPhotoList&type=icon" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -190,7 +190,7 @@ response.sendRedirect("index.jsp");
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=queryPhotoList&type=sport" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -206,7 +206,7 @@ response.sendRedirect("index.jsp");
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=queryPhotoList&type=blackwhite" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>

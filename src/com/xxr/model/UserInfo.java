@@ -1,4 +1,4 @@
-package com.wy.form;
+package com.xxr.model;
 
 public class UserInfo {
 	private Integer id = -1;      

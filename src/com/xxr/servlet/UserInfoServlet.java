@@ -1,4 +1,4 @@
-package com.wy.servlet;
+package com.xxr.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.wy.dao.OperationData;
-import com.wy.form.UserInfo;
+import com.xxr.dao.OperationData;
+import com.xxr.model.UserInfo;
+import com.xxr.utils.EncodeUtil;
+import com.xxr.utils.EncryptUtil;
 
 public class UserInfoServlet extends HttpServlet {
 	private String info = null;
@@ -36,7 +38,7 @@ public class UserInfoServlet extends HttpServlet {
 	private void user_land(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		data = new OperationData(); 
-		String username = com.wy.tools.Encrypt.toChinese(request
+		String username = com.xxr.utils.EncodeUtil.toChinese(request
 				.getParameter("username")); 
 		UserInfo userInfo = data.user_query(username); 
 		request.getSession().setAttribute("userInfo", userInfo); 
@@ -54,9 +56,9 @@ public class UserInfoServlet extends HttpServlet {
 	private void user_check(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		data = new OperationData();
-		String username = com.wy.tools.Encrypt.toChinese(request
+		String username = com.xxr.utils.EncodeUtil.toChinese(request
 				.getParameter("username"));
-		String password = com.wy.tools.Encrypt.encode(request
+		String password = EncryptUtil.MD5(request
 				.getParameter("password")); 
 		UserInfo userInfo = data.user_query(username); 
 		String code = request.getParameter("code"); 
@@ -78,16 +80,16 @@ public class UserInfoServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		data = new OperationData();
 		UserInfo userInfo = new UserInfo();
-		userInfo.setUsername(com.wy.tools.Encrypt.toChinese(request
+		userInfo.setUsername(EncodeUtil.toChinese(request
 				.getParameter("username"))); 
-		userInfo.setPassword(com.wy.tools.Encrypt.encode(request
+		userInfo.setPassword(EncryptUtil.MD5(request
 				.getParameter("password"))); 
-		userInfo.setRealname(com.wy.tools.Encrypt.toChinese(request
+		userInfo.setRealname(EncodeUtil.toChinese(request
 				.getParameter("realname"))); 
 		userInfo.setEmail(request.getParameter("email")); 
-		userInfo.setQuestion(com.wy.tools.Encrypt.toChinese(request
+		userInfo.setQuestion(EncodeUtil.toChinese(request
 				.getParameter("question"))); 
-		userInfo.setResult(com.wy.tools.Encrypt.toChinese(request
+		userInfo.setResult(EncodeUtil.toChinese(request
 				.getParameter("result"))); 
 		String information = "";
 		String code = request.getParameter("code"); 
@@ -101,7 +103,7 @@ public class UserInfoServlet extends HttpServlet {
 		}
 		if (information.equals("")) { 
 			information = "注册信息不能为空";
-			String username = com.wy.tools.Encrypt.toChinese(request
+			String username = EncodeUtil.toChinese(request
 					.getParameter("username"));
 			request.setAttribute("information", information); 
 			request.setAttribute("username", username); 

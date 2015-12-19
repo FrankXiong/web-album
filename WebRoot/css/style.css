@@ -8,6 +8,8 @@
   margin: 0;
   padding:0;
 }
+.white { color: #fff; }
+.gray { color: #999; }
 body{
 	background-color:rgb(238,238,238);
 }
@@ -435,4 +437,145 @@ input:-webkit-autofill {
 
 .footer-icon{
 	margin-right:10px;
+}
+
+
+/*scroll img*/
+#scroll-img{
+	width:600px;
+	height: 500px;
+	overflow: hidden;
+  	margin:36px auto;
+}
+#scroll-img img{
+	width:100%;
+	height:auto;
+}
+.rslides {
+  margin: 0 auto 40px;
+  }
+.callbacks_container {
+  position: relative;
+  float: left;
+  width: 100%;
+  }
+
+.callbacks {
+  position: relative;
+  list-style: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  }
+
+.callbacks li {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  }
+
+.callbacks img {
+  display: block;
+  position: relative;
+  z-index: 1;
+  height: auto;
+  width: 100%;
+  border: 0;
+  }
+
+.callbacks .caption {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  font-size: 20px;
+  text-shadow: none;
+  color: #fff;
+  background: #000;
+  background: rgba(0,0,0, .5);
+  left: 0;
+  right: 0;
+  bottom: 50px;
+  padding: 10px 20px;
+  margin: 0;
+  max-width: none;
+  }
+.callbacks_nav {
+  position: absolute;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  top: 52%;
+  left: 0;
+  opacity: 0.5;
+  z-index: 3;
+  text-indent: -9999px;
+  overflow: hidden;
+  text-decoration: none;
+  height: 61px;
+  width: 38px;
+  background: transparent url("../images/scroll_btn.gif") no-repeat left top;
+  margin-top: -45px;
+  }
+
+.callbacks_nav:active {
+  opacity: 1.0;
+  }
+
+.callbacks_nav.next {
+  left: auto;
+  background-position: right top;
+  right: 0;
+  }
+
+.pic-btn-group{
+	display: block;
+  position: absolute;
+  z-index: 2;
+  font-size: 16px;
+  text-shadow: none;
+  color: #fff;
+  background: #111;
+  background: rgba(0,0,0, .9);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 20px;
+  margin: 0;
+  max-width: none;
+}
+.pic-btn-group .pic-info{
+	float:left;
+	color:#fff;
+	line-height:32px;
+	font-size:14px;
+	margin-right:20px;
+}
+.pic-btn-group button{
+	float:right;
+	margin-right:20px;
+}
+.pic-title{
+	line-height:20px;
+	margin:5px 0;
+	font-size:20px;
+}
+.mdl-button--icon{
+	font-size:16px;
+}
+
+
+
+.pic-detail-wrapper{
+	width:600px;
+	margin:0 auto;
+	position:relative;
+	top:-10px;
+}
+.pic-detail-wrapper .page-album-title{
+	margin-left:0;
+	margin-top:10px;
+	margin-bottom:10px;	
+}
+.page-album-title{
+	font-size:16px;
 }

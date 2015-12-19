@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*,com.wy.form.*" errorPage="" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*,com.xxr.model.*" errorPage="" %>
 
 <html>
 <head>
@@ -17,12 +17,11 @@
 <script src="js/material.js" type="text/javascript"></script>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="dao" scope="page" class="com.wy.dao.OperationData"></jsp:useBean>
-<title>首页</title>
+<jsp:useBean id="dao" scope="page" class="com.xxr.dao.OperationData"></jsp:useBean>
 </head>
+
 <body>
 <div class="container">
-
 <header><jsp:include page="header.jsp" flush="true" /></header>
 <div class="wrapper">      
 	<span class="page-album-title">所有图片</span>
@@ -63,7 +62,7 @@ break;
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="photoServlet?info=queryPhotoList&type=网页设计" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=queryPhotoList&type=web design" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -78,7 +77,7 @@ break;
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="photoServlet?info=queryPhotoList&type=海报" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=queryPhotoList&type=poster" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -93,7 +92,7 @@ break;
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="photoServlet?info=queryPhotoList&type=人物" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=queryPhotoList&type=person" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -109,7 +108,7 @@ break;
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="photoServlet?info=queryPhotoList&type=漫画" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=queryPhotoList&type=carton" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -129,7 +128,7 @@ break;
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=queryPhotoList&type=life" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -144,7 +143,7 @@ break;
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=queryPhotoList&type=icon" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -159,7 +158,7 @@ break;
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=queryPhotoList&type=sport" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -175,7 +174,7 @@ break;
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=queryPhotoList&type=blackwhite" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>

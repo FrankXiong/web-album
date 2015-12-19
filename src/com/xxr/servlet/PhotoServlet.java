@@ -1,11 +1,9 @@
-package com.wy.servlet;
+package com.xxr.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Calendar;
 import java.util.List;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,10 +13,11 @@ import com.jspsmart.upload.File;
 import com.jspsmart.upload.Files;
 import com.jspsmart.upload.SmartUpload;
 import com.jspsmart.upload.SmartUploadException;
-import com.wy.dao.OperationData;
-import com.wy.form.Photo;
-import com.wy.form.UserInfo;
+import com.xxr.dao.OperationData;
+import com.xxr.model.Photo;
+import com.xxr.model.UserInfo;
 
+@SuppressWarnings("unused")
 public class PhotoServlet extends HttpServlet {
 
 	private String info = "";
@@ -28,31 +27,18 @@ public class PhotoServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		info = request.getParameter("info");
-		if (info.equals("userQueryPhoto")) {
-			this.user_queryPhoto(request, response);
+		if (info.equals("user_album")) {
+			this.userAlbum(request, response);
 		}
 		if (info.equals("userUploadPhoto")) {
 			this.user_uploadPhoto(request, response);
 		}
-		if (info.equals("queryOnePhoto")) {
-			this.queryOnePhoto(request, response);
-		}
 		if (info.equals("queryPhotoList")) {
 			this.user_queryPhotoList(request, response);
 		}
-		if (info.equals("queryOnePhoto")) {
-			this.queryOnePhoto(request, response);
-		}
-		if (info.equals("queryPhotoSlide")) {
-			this.queryPhotoSlide(request, response);
-		}
-		if (info.equals("userDeletePhoto")) {
+		if (info.equals("user_delete")) {
 			this.user_deletePhoto(request, response);
 		}
-//		if (info.equals("userprintPhoto")) {
-//
-//			this.user_printPhoto(request, response);
-//		}
 		if (info.equals("forward_index")) {
 			this.forward_index(request, response);
 		}
@@ -64,49 +50,12 @@ public class PhotoServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		List list = new OperationData().queryPhotoList();
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("photoIndex.jsp").forward(request,
+		request.getRequestDispatcher("photo_index.jsp").forward(request,
 				response);
 	}
 
-//	public void user_printPhoto(HttpServletRequest request,
-//			HttpServletResponse response) throws ServletException, IOException {
-//		data = new OperationData();
-//		Integer id = Integer.valueOf(request.getParameter("id"));
-//		String condition = "id = '" + id + "'";
-//		List list = data.photo_queryList(condition);
-//		Photo photo1 = (Photo) list.get(0);
-//		String filePath = request.getRealPath(photo1.getPhotoAddress()); 
-//		String print = "savePrint/" + System.currentTimeMillis() + ".JPG";
-//		String printPath = request.getRealPath(print);
-//		if (!photo1.getPrintAddress().equals("0")) {
-//			String path = request.getRealPath(photo1.getPrintAddress());
-//			java.io.File file1 = new java.io.File(path);
-//			if (file1.exists()) {
-//				file1.delete();
-//			}
-//		}
-//		String printInforamtion = com.wy.tools.Encrypt.toChinese(request
-//				.getParameter("information"));
-//		String information = "photoServlet line 90";
-//		if (com.wy.tools.ImageUtils.createMark(filePath, printPath,
-//				printInforamtion)) {
-//			Photo photo2 = new Photo();
-//			photo2.setId(photo1.getId());
-//			photo2.setPrintAddress(print);
-//			if (data.updatePhoto(photo2)) {
-//				information = "photoServlet line 97";
-//			}
-//		}
-//
-//		request.setAttribute("information", information);
-//		List list1 = data.photo_queryList(condition);
-//		Photo photo3 = (Photo) list1.get(0);
-//		request.setAttribute("photo", photo3);
-//		request.getRequestDispatcher("photoShow.jsp")
-//				.forward(request, response);
-//	}
 
-	@SuppressWarnings({ "rawtypes", "unused"})
+	@SuppressWarnings({ "rawtypes"})
 	public void user_deletePhoto(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=utf-8");
@@ -121,7 +70,6 @@ public class PhotoServlet extends HttpServlet {
 		if (list.size() == 1) { 
 			Photo photo = (Photo) list.get(0);
 			address = photo.getPhotoAddress(); 
-//			print = photo.getPrintAddress();
 			type = photo.getPhotoType(); 
 		}
 		String path = this.getServletContext().getRealPath("/" + address);
@@ -146,7 +94,7 @@ public class PhotoServlet extends HttpServlet {
 		
 		data = new OperationData();
 		com.jspsmart.upload.SmartUpload su = new com.jspsmart.upload.SmartUpload();
-		String information = "photoServlet line 147!";
+		String information = "上传图片成功！";
 		try {
 			su.initialize(this.getServletConfig(), request, response);
 			su.setMaxFileSize(20 * 1024 * 1024); 
@@ -190,7 +138,7 @@ public class PhotoServlet extends HttpServlet {
 						if (data.photo_save(photo)) { 
 							singleFile.saveAs(filedir, File.SAVEAS_VIRTUAL);
 							//创建缩略图
-							com.wy.tools.ImageUtils.createSmallPhoto(
+							com.xxr.utils.ImageUtil.createSmallPhoto(
 									this.getServletContext().getRealPath("/" + filedir),
 									this.getServletContext().getRealPath("/" + smalldir));
 							information = "photoServlet line 203!";
@@ -207,7 +155,7 @@ public class PhotoServlet extends HttpServlet {
 	}
 	
 	@SuppressWarnings({ "rawtypes" })
-	public void user_queryPhoto(HttpServletRequest request,
+	public void userAlbum(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		data = new OperationData();
 		UserInfo userInfo = (UserInfo) request.getSession().getAttribute(
@@ -218,7 +166,7 @@ public class PhotoServlet extends HttpServlet {
 		String condition = "username = '" + username + "'";
 		List list = data.photo_queryList(condition); 
 		request.setAttribute("list", list); 
-		request.getRequestDispatcher("userAlbum.jsp").forward(request,
+		request.getRequestDispatcher("user_album.jsp").forward(request,
 				response);
 	}
 
@@ -227,8 +175,7 @@ public class PhotoServlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		data = new OperationData();
-		String type = com.wy.tools.Encrypt.toChinese(request
-				.getParameter("type")); 
+		String type = request.getParameter("type"); 
 		String condition = "photoType = '" + type + "'";
 		if (null != request.getSession().getAttribute("userInfo")) {
 			UserInfo userInfo = (UserInfo) request.getSession().getAttribute(
@@ -249,57 +196,7 @@ public class PhotoServlet extends HttpServlet {
 					request, response);
 		}
 	}
-
-	@SuppressWarnings({ "rawtypes" })
-	public void queryOnePhoto(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		data = new OperationData();
-		Integer id = Integer.valueOf(request.getParameter("id")); 
-		String condition = "id = '" + id + "'";
-		List list = data.photo_queryList(condition);
-		Photo photo = null;
-		if (list.size() == 1) { 
-			photo = (Photo) list.get(0);
-		}
-		request.setAttribute("photo", photo);
-		try {
-			request.getRequestDispatcher("photoShow.jsp").forward(request,
-					response);
-			return;
-		} catch (Exception e) {
-
-		}
-
-	}
-
-	@SuppressWarnings({ "rawtypes" })
-	public void queryPhotoSlide(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		data = new OperationData();
-		UserInfo userInfo = (UserInfo) request.getSession().getAttribute(
-				"userInfo"); 
-		String username = userInfo.getUsername();
-		String type = com.wy.tools.Encrypt.toChinese(request
-				.getParameter("type"));
-		String condition = "username ='" + username + "' and photoType = '"
-				+ type + "'"; 
-		List list = data.photo_queryList(condition);
-		String address[] = new String[list.size()];
-		for (int i = 0; i < list.size(); i++) {
-			Photo photo = (Photo) list.get(i);
-			address[i] = photo.getPhotoAddress(); 
-		}
-		request.setAttribute("address", address); 
-		request.getRequestDispatcher("photoShowSlide.jsp").forward(request,
-				response);
-	}
 	
-//	public void uploadPhoto(HttpServletRequest request,
-//			HttpServletResponse response) throws ServletException, IOException{
-//		
-//	}
-	
-
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		this.doGet(request, response);

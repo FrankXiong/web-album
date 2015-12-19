@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
-<jsp:directive.page import="com.wy.form.Photo"/>
+<jsp:directive.page import="com.xxr.model.Photo"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,23 +21,27 @@ Photo photo=(Photo)request.getAttribute("photo");
 %>
 <body>
 	<header><jsp:include page="header.jsp" flush="true" /></header>
- <table width="753" height="37" align="center" cellpadding="0" cellspacing="0" background="images/13.jpg">
+ <table width="753" height="37" align="center" cellpadding="0" cellspacing="0">
    <tr>
      <td width="777" height="30"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#EDE6BC" size="-1"><b>当前用户：${sessionScope.userInfo.username}</b></font></td>
      <td width="117"><br><a href="#" onClick="javascript:history.go(-1);" class="a1">返回</a></td>
    </tr>
 </table>
 
-  <table width="753" height="60" border="0" align="center" cellpadding="0" cellspacing="0" background="images/14.jpg">
+  <table width="753" height="60" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
       <td><table width="476" border="0" align="center">
         <tr>
-          <td height="51" valign="bottom" align="center"><a href="#" class="a3" onclick="images11.src='${requestScope.photo.photoAddress}'">查看源相片</a>&nbsp;&nbsp;&nbsp; <c:if test="${requestScope.photo.printAddress!=0}"><a href="#" onclick="images11.src='${requestScope.photo.printAddress}'" class="a3">查看水印相片</a></c:if> </td>
+          <td height="51" valign="bottom" align="center"><a href="#" class="a3" onclick="images11.src='${requestScope.photo.photoAddress}'">查看源相片</a>
+          <c:if test="${requestScope.photo.printAddress!=0}">
+          	<a href="#" onclick="images11.src='${requestScope.photo.printAddress}'" class="a3">查看水印相片</a>
+          </c:if> 
+          </td>
         </tr>
       </table></td>
     </tr>
   </table>
-  <table width="753" height="499" border="0" align="center" cellpadding="0" cellspacing="0" background="images/15.jpg">
+  <table width="753" height="499" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
       <td width="60" height="499" valign="top">&nbsp;</td>
       <td width="438" valign="top"><table width="210" height="64" border="0" cellpadding="0" cellspacing="0">

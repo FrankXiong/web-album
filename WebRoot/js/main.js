@@ -147,3 +147,7 @@ function addMore(){
     td.appendChild(input);
     td.appendChild(button);
 }
+
+function delPhoto(){
+	
+}

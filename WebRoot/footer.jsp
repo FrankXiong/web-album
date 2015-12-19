@@ -4,7 +4,7 @@
 	<div class="footer-wrap">
           <div class="mdl-mega-footer--top-section">
             <div class="mdl-mega-footer--left-section"> 
-            	<a class="mdl-typography--font-light" href="#">             
+            	<a class="mdl-typography--font-light gray" href="#">             
                 	<i class="material-icons footer-icon">camera</i>                              
              		<i class="material-icons footer-icon">mail</i>
              		<i class="material-icons footer-icon">forum</i> 

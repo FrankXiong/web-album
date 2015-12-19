@@ -1,0 +1,3 @@
+-- SET SQL_SAFE_UPDATES = 0;
+SELECT * FROM album.tb_photo;
+DELETE FROM album.tb_photo WHERE photoType = '????????????';

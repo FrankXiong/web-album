@@ -31,18 +31,16 @@
 	</c:if>
 	
 	<!-- Navigation -->
-          <div class="android-navigation-container">
-            <nav class="android-navigation mdl-navigation">
-              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="index.jsp">首页</a>
-              <!-- <a class="mdl-navigation__link mdl-typography--text-uppercase" href="photoServlet?info=userQueryPhoto">我的相册</a>
-               -->
-              <c:if test="${sessionScope.userInfo==null}">
-		          <a class="mdl-navigation__link mdl-typography--text-uppercase" href="#" onclick="javascript:checkUserInfo()" title="请您先登录">我的相册</a>
-		      </c:if>
-		      <c:if test="${sessionScope.userInfo!=null}">
-		          <a class="mdl-navigation__link mdl-typography--text-uppercase" href="photoServlet?info=userQueryPhoto">我的相册</a>
-		      </c:if>	
-            </nav>
-          </div>
+      <div class="android-navigation-container">
+        <nav class="android-navigation mdl-navigation">
+           <a class="mdl-navigation__link mdl-typography--text-uppercase" href="index.jsp">首页</a>
+           <c:if test="${sessionScope.userInfo==null}">
+		       <a class="mdl-navigation__link mdl-typography--text-uppercase" href="#" onclick="javascript:checkUserInfo()" title="请您先登录">我的相册</a>
+		   </c:if>
+		   <c:if test="${sessionScope.userInfo!=null}">
+		        <a class="mdl-navigation__link mdl-typography--text-uppercase" href="photoServlet?info=user_album">我的相册</a>
+		   </c:if>	
+        </nav>
+      </div>
 </div>
 
