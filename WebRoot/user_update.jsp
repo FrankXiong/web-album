@@ -29,11 +29,11 @@
 <div class="container">
 <jsp:include page="header.jsp" flush="true" />
    <div class="form-wrapper">
-   		<span class="page-album-title">上传图片</span>
+   		<span class="page-album-title">编辑图片信息</span>
 	 <div class="mdl-cell mdl-cell--12-col">
 	<div class="form-card cards mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
 	          
-	 <form action="photoServlet?info=user_upload" method="post" enctype="multipart/form-data" name="form" onSubmit="return checkPhoto(form)">
+	 <form action="#" method="post" enctype="multipart/form-data" name="form" onSubmit="return checkPhoto(form)">
 	 	<input name="username" value="${sessionScope.userInfo.username}"  type="text" style="display:none">
 	    <div class="form-line">
 	     	<span>相片名称:</span>
@@ -54,13 +54,8 @@
 	  		<span>上传时间：</span>
          	<span class="time-txt"><%=EncryptUtil.currentlyTime()%></span><input name="photoTime" type="hidden" value="<%=EncryptUtil.currentlyTime()%>">
          </div>
-        <div class="form-line" id="more">
-        	<span>相片位置：</span>
-        	<input name="file" type="file" maxlength="20">
-        	<input type="button" name="more.." value="增加..." onClick="addMore()">
-        </div>
         <div class="form-submit">        
-            <button class="upload-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast" type="submit" name="Submit">上传</button>
+            <button class="upload-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast" onClick="updatePhoto()">上传</button>
             <a class="form-reset" href="#" onclick="javascript:form.reset();">重置</a>
 	 	</div>
 	 </form>	 

@@ -42,7 +42,7 @@ public class JDBConnection {
 		try {
 			Statement stmt = con.createStatement();
 			int iCount = stmt.executeUpdate(sql); 
-			System.out.println("JDBC line 41" + String.valueOf(iCount)); 
+			System.out.println("success excute "+iCount+" lines sql"); 
 			return true;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

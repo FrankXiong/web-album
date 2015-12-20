@@ -3,7 +3,8 @@
 <jsp:directive.page import="com.xxr.model.Photo"/>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Material风格的图片网站">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +25,7 @@
 %>
 
 <body>
-   <header><jsp:include page="header.jsp" flush="true" /></header>   
+<jsp:include page="header.jsp" flush="true"></jsp:include>
    <%-- <%if(null!=session.getAttribute("userInfo")){ %>      
    		<a href="user_upLoadPhoto.jsp" class="a1">请您上传自己的相片</a>
     <%} %>	  
@@ -51,18 +52,17 @@
 		          <img src="images/life.jpg" alt="life">
 		          <div class="caption">
 		          	<h3 class="pic-title">Children</h3>
-		          	
 		          </div>
-		        <div class="pic-btn-group">
+		          <div class="pic-btn-group">
 		          	  <span class="pic-info">上传者：${sessionScope.userInfo.username}</span>
 		          	  <span class="pic-info">分类：网页设计</span>
-			          <button class="pic-del-btn mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+			          <button class="pic-del-btn mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" onClick="delPhoto(this)">
 			            <i class="material-icons white">delete</i>
 			          </button>
-			          <button class="pic-edit-btn mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+			          <button class="pic-edit-btn mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" onClick="redirectToEdit()">
 			            <i class="material-icons white">edit</i>
 			          </button>	
-			      </div>		      		
+			       </div>		      		
 		        </li>
 		        <li>
 		          <img src="images/person.jpg" alt="person">
@@ -101,8 +101,7 @@
 	    </div>
 	</div>
 	</div>
-
-   
+ 
 <jsp:include page="footer.jsp" flush="true"></jsp:include>	
 <script src="js/jquery.min.js"></script>
 <script src="js/responsiveslides.min.js" type="text/javascript"></script>

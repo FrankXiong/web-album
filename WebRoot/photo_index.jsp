@@ -2,7 +2,8 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Material风格的图片网站">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +23,7 @@
 
 <body>
 <div class="container">
-<header><jsp:include page="header.jsp" flush="true" /></header>
+<jsp:include page="header.jsp" flush="true" />
 <div class="wrapper">      
 	<span class="page-album-title">所有图片</span>
 <%-- <%

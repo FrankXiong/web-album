@@ -33,7 +33,7 @@ footer {
 	bottom: 0;
 	width: 100%;
 	clear:both;
-	height:120px;
+	height:140px;
 }
 .wrapper{
 	width:1000px;	
@@ -129,8 +129,6 @@ a img{
   .android-header .material-icons {
     color: #767777 !important;
   }
-
-
 
   .android-header .mdl-navigation__link {
     color: #757575;
@@ -382,22 +380,19 @@ a img{
 
 
 
-
-
-
 /*reset css*/
-.login-btn{
+.mdl-mega-footer{
+	padding-left:0 !important;
+	padding-right:0 !important;
+}
+.login-btn,.reg-btn,.upload-btn{
 	height:24px !important;
-	margin-left:20px;
+	margin-left:15px;
 	margin-right:20px;
 	line-height:24px !important;
 }
 .mdl-card__title-text{
 	color:#fff !important;
-}
-.mdl-mega-footer--right-section{
-	position:relative;
-	right:60px;
 }
 .android-footer a:hover{
 	color:rgb(255,64,129);
@@ -408,6 +403,9 @@ a img{
 .android-title{
 	position:absolute;
     font-size:30px !important;
+}
+.mdl-layout__header-row{
+	padding:0 !important;
 }
 
 
@@ -427,14 +425,6 @@ input:-webkit-autofill {
 	border-radius: 4px;
 	border:1px solid #333;
 }
-.footer-wrap{
-	width:1000px;
-	margin:0 auto;
-}
-.mdl-mega-footer--left-section,.mdl-mega-footer--middle-section{
-	margin-left:-16px;
-}
-
 .footer-icon{
 	margin-right:10px;
 }
@@ -562,9 +552,6 @@ input:-webkit-autofill {
 .mdl-button--icon{
 	font-size:16px;
 }
-
-
-
 .pic-detail-wrapper{
 	width:600px;
 	margin:0 auto;
@@ -578,4 +565,57 @@ input:-webkit-autofill {
 }
 .page-album-title{
 	font-size:16px;
+}
+.form-wrapper{
+	width:600px;
+	margin:0 auto;
+}
+.form-card{
+	padding:20px;
+}
+.form-line{
+	line-height:36px;
+	padding-left:15px;
+}
+.form-reset{
+	height:24px !important;
+	line-height:24px !important;
+	font-size:14px;
+	position:relative;
+	top:2px;
+	border:0;
+	background:none;
+}
+.form-title{
+	margin-bottom:20px;
+}
+.form-submit{
+	margin-top:40px;
+	
+}
+.hint-txt{
+	color:rgba(0,0,0,0.5);
+	font-size:12px;
+	padding-left:15px;
+	margin-top:20px;
+}
+.time-txt{
+	font-size:12px;
+}
+.form-wrapper{
+	padding-top:30px;
+	padding-bottom:182px;
+	width:600px;
+	margin:0 auto;
+}
+.out-wrapper{
+	width:1080px;
+	margin:0 auto;
+}
+
+
+
+#slider img{
+	width:600px;
+	height:450px;
 }

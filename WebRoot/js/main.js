@@ -1,4 +1,3 @@
-
 function clockon(bgclock) {
 	var now = new Date();
 	var year = now.getYear();
@@ -117,13 +116,6 @@ function checkUserInfo() {
 	alert("登录后才能查看个人相册的哟~");	
 }
 
-function checkPhotoPrint(form) {
-	if (form.information.value == "") {
-		alert("photoPrint is empty");
-		return false;
-	}
-}
-
 function addMore(){
     var td = document.getElementById("more");
     var br= document.createElement("br");
@@ -148,6 +140,13 @@ function addMore(){
     td.appendChild(button);
 }
 
-function delPhoto(){
-	
+function delPhoto(obj){
+	obj.parentNode.parentNode.style.display = "none";
+	alert("图片已删除！");
+}
+function redirectToEdit(){
+	window.location.href = "user_update.jsp";
+}
+function updatePhoto(){
+	alert("图片编辑信息已保存！");
 }

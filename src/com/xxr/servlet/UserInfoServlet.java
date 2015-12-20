@@ -15,37 +15,36 @@ import com.xxr.utils.EncryptUtil;
 
 public class UserInfoServlet extends HttpServlet {
 	private String info = null;
-
 	private OperationData data = null; 
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		info = request.getParameter("info");
-		if (info.equals("saveUser")) {
-			this.user_save(request, response);
+		if (info.equals("user_reg")) {
+			this.userReg(request, response);
 		}
-		if (info.equals("checkUser")) {
-			this.user_check(request, response);
+		if (info.equals("user_check")) {
+			this.userCheck(request, response);
 		}
-		if (info.equals("cannleUser")) {
-			this.user_cannle(request, response);
+		if (info.equals("user_logout")) {
+			this.userLogout(request, response);
 		}
-		if (info.equals("userLand")) {
-			this.user_land(request, response);
+		if (info.equals("user_login")) {
+			this.userLogin(request, response);
 		}
 	}
 
-	private void user_land(HttpServletRequest request,
+	private void userLogin(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		data = new OperationData(); 
-		String username = com.xxr.utils.EncodeUtil.toChinese(request
+		String username = EncodeUtil.toChinese(request
 				.getParameter("username")); 
-		UserInfo userInfo = data.user_query(username); 
+		UserInfo userInfo = data.userQuery(username); 
 		request.getSession().setAttribute("userInfo", userInfo); 
 		request.getRequestDispatcher("index.jsp").forward(request, response); 
 	}
 
-	private void user_cannle(HttpServletRequest request,
+	private void userLogout(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		if (null != request.getSession().getAttribute("userInfo")) {
 			request.getSession().invalidate();
@@ -53,14 +52,14 @@ public class UserInfoServlet extends HttpServlet {
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
-	private void user_check(HttpServletRequest request,
+	private void userCheck(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		data = new OperationData();
-		String username = com.xxr.utils.EncodeUtil.toChinese(request
+		String username = EncodeUtil.toChinese(request
 				.getParameter("username"));
 		String password = EncryptUtil.MD5(request
 				.getParameter("password")); 
-		UserInfo userInfo = data.user_query(username); 
+		UserInfo userInfo = data.userQuery(username); 
 		String code = request.getParameter("code"); 
 		String codeSession = (String) request.getSession().getAttribute("rand"); 
 		if (code.equals(codeSession)) {
@@ -74,43 +73,42 @@ public class UserInfoServlet extends HttpServlet {
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
-	private void user_save(HttpServletRequest request,
+	private void userReg(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=GB2312");
 		PrintWriter out = response.getWriter();
 		data = new OperationData();
 		UserInfo userInfo = new UserInfo();
-		userInfo.setUsername(EncodeUtil.toChinese(request
-				.getParameter("username"))); 
+		userInfo.setUsername(request
+				.getParameter("username")); 
 		userInfo.setPassword(EncryptUtil.MD5(request
 				.getParameter("password"))); 
-		userInfo.setRealname(EncodeUtil.toChinese(request
-				.getParameter("realname"))); 
+		userInfo.setRealname(request
+				.getParameter("realname")); 
 		userInfo.setEmail(request.getParameter("email")); 
-		userInfo.setQuestion(EncodeUtil.toChinese(request
-				.getParameter("question"))); 
-		userInfo.setResult(EncodeUtil.toChinese(request
-				.getParameter("result"))); 
+		userInfo.setQuestion(request
+				.getParameter("question")); 
+		userInfo.setResult(request
+				.getParameter("result")); 
 		String information = "";
 		String code = request.getParameter("code"); 
 		String codeSession = (String) request.getSession().getAttribute("rand"); 
 		if (code.equals(codeSession)) { 
-			if (!data.user_save(userInfo)) { 
+			if (!data.userSave(userInfo)) { 
 				information = "注册失败";
 			}
-		} else {
-			information = "注册成功";
+			else {
+				information = "注册成功";
+			}
 		}
 		if (information.equals("")) { 
-			information = "注册信息不能为空";
 			String username = EncodeUtil.toChinese(request
 					.getParameter("username"));
 			request.setAttribute("information", information); 
 			request.setAttribute("username", username); 
-			request.getRequestDispatcher("user_save.jsp").forward(request,
+			request.getRequestDispatcher("user_reg.jsp").forward(request,
 					response);
 		}
-		out.print("<script language=javascript>alert('" + information
+		out.print("<script language=javascript>alert('" + "success!"
 				+ "');history.go(-1);</script>"); 
 	}
 

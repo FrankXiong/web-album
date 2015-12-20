@@ -1,3 +1,4 @@
 -- SET SQL_SAFE_UPDATES = 0;
-SELECT * FROM album.tb_photo;
-DELETE FROM album.tb_photo WHERE photoType = '????????????';
+-- SELECT * FROM album.tb_photo;
+-- DELETE FROM album.tb_photo WHERE username = 'user01'; 
+-- alter table tb_userInfo drop column id; 

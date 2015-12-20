@@ -3,7 +3,8 @@
 <jsp:directive.page import="com.xxr.model.Photo"/>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Material风格的图片网站">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,10 +30,10 @@ response.sendRedirect("index.jsp");
 
 <body>
 <div class="container">
-   <header><jsp:include page="header.jsp" flush="true" /></header>
+   <jsp:include page="header.jsp" flush="true" />
    <div class="wrapper">   
    		<span class="page-album-title">我的相册</span>
-       <a href="user_upLoadPhoto.jsp" class="page-album-upload-btn">上传图片</a>	  
+       <a href="user_upload.jsp" class="page-album-upload-btn">上传图片</a>	  
        
 	   <c:if test="${empty type}">
 	      <c:out value="你还没有上传过图片"/>	      
@@ -94,7 +95,7 @@ response.sendRedirect("index.jsp");
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="photoServlet?info=queryPhotoList&type=web design" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=user_gallery&type=web design" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -109,7 +110,7 @@ response.sendRedirect("index.jsp");
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="photoServlet?info=queryPhotoList&type=poster" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=user_gallery&type=poster" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -124,7 +125,7 @@ response.sendRedirect("index.jsp");
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="photoServlet?info=queryPhotoList&type=person" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=user_gallery&type=person" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -140,7 +141,7 @@ response.sendRedirect("index.jsp");
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="photoServlet?info=queryPhotoList&type=carton" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=user_gallery&type=carton" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -160,7 +161,7 @@ response.sendRedirect("index.jsp");
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="photoServlet?info=queryPhotoList&type=life" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=user_gallery&type=life" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -175,7 +176,7 @@ response.sendRedirect("index.jsp");
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="photoServlet?info=queryPhotoList&type=icon" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=user_gallery&type=icon" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -190,7 +191,7 @@ response.sendRedirect("index.jsp");
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="photoServlet?info=queryPhotoList&type=sport" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=user_gallery&type=sport" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>
@@ -206,7 +207,7 @@ response.sendRedirect("index.jsp");
                 收录当下网页设计佳作
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="photoServlet?info=queryPhotoList&type=blackwhite" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
+                <a href="photoServlet?info=user_gallery&type=blackwhite" class="mdl-button mdl-js-button mdl-js-ripple-effect">了解更多</a>
               </div>
             </div>
         </div>

@@ -16,7 +16,7 @@ public class OperationData {
 	private List list = null;                
 	String sql = "";                        
 	                       
-	public UserInfo user_query(String username) {
+	public UserInfo userQuery(String username) {
 		UserInfo userInfo = null;        
 		connection = new JDBConnection(); 
 		sql = "SELECT * FROM tb_userInfo WHERE username='" + username + "'";
@@ -41,10 +41,10 @@ public class OperationData {
 		return userInfo;                                        
 	}
 
-	public boolean user_save(UserInfo userinfo) {
+	public boolean userSave(UserInfo userinfo) {
 		connection = new JDBConnection(); 
 		sql = "INSERT INTO tb_userInfo VALUES ('"
-				+ userinfo.getUsername() + "','"
+				+ EncodeUtil.toChinese(userinfo.getUsername() )+ "','"
 				+ userinfo.getPassword() + "','"
 				+ userinfo.getRealname() + "','" 
 				+ userinfo.getEmail() + "','"
@@ -55,13 +55,13 @@ public class OperationData {
 		return flag;                                  
 	}
 
-	public boolean photo_save(Photo photo) {
+	public boolean photoUpload(Photo photo) {
 		connection = new JDBConnection(); 
 		sql = "insert into tb_photo values ('" 
 				+ photo.getPhotoName() + "','"
 				+ photo.getPhotoSize() + "','" 
 				+ photo.getPhotoType() + "','"
-				+ EncodeUtil.toChinese(photo.getPhotoTime()) + "','" 
+				+ photo.getPhotoTime() + "','" 
 				+ photo.getPhotoAddress()+ "','" 
 				+ photo.getUsername() + "','" 
 				+ photo.getSmallPhoto()+ "')";
@@ -70,16 +70,16 @@ public class OperationData {
 		return flag; 
 	}
 
-	public boolean photo_delete(Integer id) {
+	public boolean photoDelete(String photoName) {
 		connection = new JDBConnection(); 
-		sql = "delete from tb_photo where id=" + id + ""; 
+		sql = "delete from tb_photo where photoName=" + photoName + ""; 
 		boolean flag = connection.executeUpdate(sql); 
 		connection.closeConnection(); 
 		return flag; 
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public List photo_queryList(String condition) {
+	public List photoQueryList(String condition) {
 		Photo photo = null; 
 		list = new ArrayList();
 		sql = "SELECT * FROM tb_photo";

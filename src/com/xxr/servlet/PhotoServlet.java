@@ -16,6 +16,8 @@ import com.jspsmart.upload.SmartUploadException;
 import com.xxr.dao.OperationData;
 import com.xxr.model.Photo;
 import com.xxr.model.UserInfo;
+import com.xxr.utils.EncodeUtil;
+import com.xxr.utils.ImageUtil;
 
 @SuppressWarnings("unused")
 public class PhotoServlet extends HttpServlet {
@@ -27,18 +29,31 @@ public class PhotoServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		info = request.getParameter("info");
+//		查看用户所有相册
 		if (info.equals("user_album")) {
 			this.userAlbum(request, response);
 		}
-		if (info.equals("userUploadPhoto")) {
-			this.user_uploadPhoto(request, response);
+//		用户上传图片
+		if (info.equals("user_upload")) {
+			this.userUpload(request, response);
 		}
-		if (info.equals("queryPhotoList")) {
-			this.user_queryPhotoList(request, response);
+//		用户浏览相册下的所有图片
+		if (info.equals("user_gallery")) {
+			this.userGallery(request, response);
 		}
+//		用户删除单个图片
 		if (info.equals("user_delete")) {
-			this.user_deletePhoto(request, response);
+			this.userDeletePhoto(request, response);
 		}
+//		用户更新图片
+		if (info.equals("user_update")) {
+			this.userUpdatePhoto(request, response);
+		}
+//		用户查看单个图片详细信息
+		if (info.equals("user_photo_detail")) {
+			this.userPhotoDetail(request, response);
+		}
+//		重定向到首页
 		if (info.equals("forward_index")) {
 			this.forward_index(request, response);
 		}
@@ -54,18 +69,15 @@ public class PhotoServlet extends HttpServlet {
 				response);
 	}
 
-
 	@SuppressWarnings({ "rawtypes"})
-	public void user_deletePhoto(HttpServletRequest request,
+	public void userDeletePhoto(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		data = new OperationData();
-		Integer id = Integer.valueOf(request.getParameter("id"));
-		String condition = "id=" + id; 
-		List list = data.photo_queryList(condition); 
+		String photoName = request.getParameter("photoName");
+		String condition = "photoName=" + photoName; 
+		List list = data.photoQueryList(condition); 
 		String address = null; 
-		String print = null;
 		String type = null;
 		if (list.size() == 1) { 
 			Photo photo = (Photo) list.get(0);
@@ -73,28 +85,21 @@ public class PhotoServlet extends HttpServlet {
 			type = photo.getPhotoType(); 
 		}
 		String path = this.getServletContext().getRealPath("/" + address);
-		data.photo_delete(id); 
-		java.io.File file1 = new java.io.File(path);
-		if (file1.exists()) {
-			file1.delete();
-		}
-		String printPath = this.getServletContext().getRealPath("/" + print);
-		java.io.File file2 = new java.io.File(printPath);
-		if (file2.exists()) {
-			file2.delete();
+		data.photoDelete(photoName); 
+		java.io.File file = new java.io.File(path);
+		if (file.exists()) {
+			file.delete();
 		}
 		request.setAttribute("type", type);
 		request.getRequestDispatcher("dealwith.jsp").forward(request, response);
 	}
 
-	public void user_uploadPhoto(HttpServletRequest request,
+	public void userUpload(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-			response.setContentType("text/html;charset=gb2312");
-			response.setCharacterEncoding("utf-8");
 		
 		data = new OperationData();
 		com.jspsmart.upload.SmartUpload su = new com.jspsmart.upload.SmartUpload();
-		String information = "上传图片成功！";
+		String information = "图片上传成功！";
 		try {
 			su.initialize(this.getServletConfig(), request, response);
 			su.setMaxFileSize(20 * 1024 * 1024); 
@@ -102,10 +107,12 @@ public class PhotoServlet extends HttpServlet {
 			Files files = su.getFiles(); 
 
 			for (int i = 0; i < files.getCount(); i++) {
+				// 获取上传文件的单个文件
 				File singleFile = files.getFile(i); 
-
+				// 获取上传文件的扩展名
 				String fileType = singleFile.getFileExt(); 
-				String[] type = { "JPG", "jpg", "gif", "bmp", "BMP" }; 
+				String[] type = { "JPG", "jpg", "gif", "bmp", "BMP", "png"};
+				// 判断上传文件的类型是否正确
 				int place = java.util.Arrays.binarySearch(type, fileType);
 
 				if (place != -1) { 
@@ -120,10 +127,10 @@ public class PhotoServlet extends HttpServlet {
 								"username"); 
 						String photoSize = String.valueOf(singleFile
 								.getSize()); 
-						String filedir = "savefile/"
+						String filedir = "/savefile/"
 								+ System.currentTimeMillis() + "."
-								+ singleFile.getFileExt(); 
-						String smalldir = "saveSmall/"
+								+ singleFile.getFileExt();
+						String smalldir = "/saveSmall/"
 								+ System.currentTimeMillis() + "."
 								+ singleFile.getFileExt();
 
@@ -135,13 +142,15 @@ public class PhotoServlet extends HttpServlet {
 						photo.setUsername(username);
 						photo.setPhotoAddress(filedir);
 						photo.setSmallPhoto(smalldir);
-						if (data.photo_save(photo)) { 
+						
+						if (data.photoUpload(photo)) { 
+							//存储到以web应用程序的根目录为文件根目录的目录下							
 							singleFile.saveAs(filedir, File.SAVEAS_VIRTUAL);
 							//创建缩略图
-							com.xxr.utils.ImageUtil.createSmallPhoto(
+							ImageUtil.createSmallPhoto(
 									this.getServletContext().getRealPath("/" + filedir),
 									this.getServletContext().getRealPath("/" + smalldir));
-							information = "photoServlet line 203!";
+							information = "图片上传成功！";
 						}
 					}
 				}
@@ -150,7 +159,7 @@ public class PhotoServlet extends HttpServlet {
 			System.out.println(e+"in upload photo");
 		}
 		request.setAttribute("information", information);
-		request.getRequestDispatcher("user_upLoadPhoto.jsp").forward(request,
+		request.getRequestDispatcher("user_upload.jsp").forward(request,
 				response);
 	}
 	
@@ -164,14 +173,14 @@ public class PhotoServlet extends HttpServlet {
 		String[] type = data.queryPhotoType(username); 
 		request.setAttribute("type", type); 
 		String condition = "username = '" + username + "'";
-		List list = data.photo_queryList(condition); 
+		List list = data.photoQueryList(condition); 
 		request.setAttribute("list", list); 
 		request.getRequestDispatcher("user_album.jsp").forward(request,
 				response);
 	}
 
 	@SuppressWarnings({ "rawtypes" })
-	public void user_queryPhotoList(HttpServletRequest request,
+	public void userGallery(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
 		data = new OperationData();
@@ -184,18 +193,44 @@ public class PhotoServlet extends HttpServlet {
 			condition = "username ='" + username + "' and photoType = '" + type
 					+ "'"; 
 		}
-		List list = data.photo_queryList(condition);
+		List list = data.photoQueryList(condition);
 		if (list.size() == 0) {
-			request.setCharacterEncoding("gb2312");
 			PrintWriter out = response.getWriter();
 			out.print("<script language=javascript>history.go(-1);</script>");
 		} else {
 			request.setAttribute("list", list); 
 			request.setAttribute("type", type); 
-			request.getRequestDispatcher("user_queryPhotoList.jsp").forward(
+			request.getRequestDispatcher("user_gallery.jsp").forward(
 					request, response);
 		}
 	}
+	
+	@SuppressWarnings("rawtypes")
+	public void userPhotoDetail(HttpServletRequest request,
+			HttpServletResponse response) {
+		data = new OperationData();
+		String photoName = request.getParameter("photoName"); // 获取页面中相册的ID号
+		String condition = "photoName = '" + photoName + "'"; // 设置查询条件：以id号为查询条件
+		List list = data.photoQueryList(condition); // 执行查询的方法
+		Photo photo = null;
+		if (list.size() == 1) { // 由于id号的值在数据库中是唯一的，因此只存在一组数据
+			photo = (Photo) list.get(0);
+		}
+		request.setAttribute("photo", photo); // 将查询的结果保存在request范围内
+		try {
+			request.getRequestDispatcher("photoShow.jsp").forward(request,
+					response);
+			return;
+		} catch (Exception e) {
+
+		}
+	}
+	
+	public void userUpdatePhoto(HttpServletRequest request,
+			HttpServletResponse response){
+		
+	}
+	
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -203,36 +238,4 @@ public class PhotoServlet extends HttpServlet {
 	}
 	
 	
-	
-//	public void uploadPhoto(HttpServletRequest request, HttpServletResponse response) throws ServletException{
-//		ServletConfig config = this.getServletConfig();
-//		
-//		SmartUpload mSmartUpload = new SmartUpload();
-//		mSmartUpload.initialize(config, request,response);
-//		
-//		try {
-//			mSmartUpload.upload();
-//			com.jspsmart.upload.File file = mSmartUpload.getFiles().getFile(0);
-//			String fileName = file.getFileName();
-//			int idx = fileName.lastIndexOf(".");
-//			String fileFormat = fileName.substring(idx, fileName.length());
-//			Calendar cal = Calendar.getInstance();
-//			int year = cal.get(Calendar.YEAR);
-//			int mouth = cal.get(Calendar.MONTH)+1;
-//			int day = cal.get(Calendar.DAY_OF_MONTH);
-//			int hour = cal.get(Calendar.HOUR_OF_DAY);
-//
-//			//获取当前系统时间的毫秒数，用于标识图片			
-//			String photoName = String.valueOf(System.currentTimeMillis());
-//			
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (SmartUploadException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//	}
-
 }
